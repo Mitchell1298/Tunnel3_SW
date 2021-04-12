@@ -46,14 +46,18 @@ class SimpleChat(WebSocket):
             client.send_message(self.address[0] + u' - disconnected')
             
     def onStopLichtOff(self):
-        for client in clients:
-            client.send_message("stoplicht is off")
+        self.broadcastMessage("stoplicht is off")
             
     def controlSlagboom(self, parameter1):
         if parameter1 == "open":
-            print("Opened slagboom")
+            self.broadcastMessage("Opened slagboom")
         elif parameter1 == "close":
-            print("Closed slagboom")
+            self.broadcastMessage("Closed slagboom")
+            
+    def broadcastMessage(self, message):
+        print("Broadcast: " + message)
+        for client in clients:
+            client.send_message(message)
         
 
 clients = []
