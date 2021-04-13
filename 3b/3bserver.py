@@ -25,6 +25,8 @@ class SimpleChat(WebSocket):
             self.controlCamera(parameter1, parameter2)
         elif (command == "trafficlight"):
             self.controlTrafficlight(parameter1, parameter2)
+        elif (command == "zone"):
+            self.controlZone(parameter1, parameter2)
         else:
             self.broadcastMessage("Unkown command")
         
@@ -40,6 +42,7 @@ class SimpleChat(WebSocket):
                 print ("BBB DONE")
                 self.bbb.barrier_position_callback = self.on_barrier_position_changed
                 self.bbb.barrier_direction_callback = self.on_barrier_direction_changed
+                self.bbb.lights_state_callback = self.lights_state_callback
         except Exception as e: print(e)
         
         
@@ -89,15 +92,15 @@ class SimpleChat(WebSocket):
             print("one")
             if parameter2 == "open":
                 print("before open")
-                self.bbb.lfv.open_barrier(Lfv.BARRIER_1)
+                self.bbb.lfv.open_barrier(slagboom)
                 print("after open")
                 self.broadcastMessage("Opened slagboom")
                 print("two")
             elif parameter2 == "close":
-                self.bbb.lfv.close_barrier(Lfv.BARRIER_1)
+                self.bbb.lfv.close_barrier(slagboom)
                 self.broadcastMessage("Closed slagboom")
             elif parameter2 == "toggle":
-                self.bbb.toggle_barrier(Lfv.BARRIER_1)
+                self.bbb.toggle_barrier(slagboom)
                 self.broadcastMessage("Toggled slagboom")
         except Exception as e: print(e)
     def controlCamera(self, parameter1, parameter2):
@@ -142,6 +145,9 @@ class SimpleChat(WebSocket):
             self.broadcastMessage("Toggled trafficlight")
         else:
             self.broadcastMessage("Unknown trafficlight command")
+            
+    def controlZone(self, parameter1, parameter2):
+        self.bbb.lfv.set_lights_level_zone(int(parameter1), int(parameter2))
         
     def broadcastMessage(self, message):
         print("Broadcast: " + message)
@@ -156,7 +162,9 @@ class SimpleChat(WebSocket):
         print("ik doe niks")
         #print(str(barrier) + " " + str(direction))
         #self.broadcastMessage(str(barrier) + " " + str(direction))
-
+    def lights_state_callback(self, light, position):
+        self.broadcastMessage("trafficlight " + str(light) + " " + str(position.value))
+        
 clients = []
 
 server = WebSocketServer('', 8000, SimpleChat)
