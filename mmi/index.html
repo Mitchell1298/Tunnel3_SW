@@ -37,10 +37,80 @@
         <div class="element col-md-4">
           <h1>Primaire bediening (Buttons)</h1>
         </div>
-        <div class="element col-md-8">
-          <h1>Overzichts-Plattegrond</h1>
+        <div class="element col-md-12">
+			<div class='row'>
+				<div class="element col-md-12">
+					<h1>Overzichts-Plattegrond</h1>
+					<svg width="100%" height="100%" viewBox="0 0 500 100">
+						<rect x="0" y="0" width="500" height="100" style="fill:rgb(0,0,0);stroke-width:3;stroke:rgb(0,0,0)" />
+						<line x1="0" y1="50" x2="500" y2="50" style="stroke:rgb(255,255,255);stroke-width:2" />
+						
+						<rect x="20" y="5" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
+						<rect x="20" y="25" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
+						<line onclick="sendCommand('slagboom 1 close')" x1="70" y1="0" x2="70" y2="20" style="stroke:rgb(255,0,0);stroke-width:10" />
+						<line onclick="sendCommand('slagboom 1 open')" x1="70" y1="20" x2="70" y2="40" style="stroke:rgb(0,255,0);stroke-width:10" />
+						
+					</svg>
+				</div>
+			</div>
+			<div class='row'>
+				<div class="element col-md-1">
+					<h4>Lamp 1</h4>
+					<input id='lamp1' type="text" name="fname">
+					<button type="button" onclick="sendLightCommand(1)" class="btn btn-secondary full-width">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				</div>
+				<div class="element col-md-1">
+					<h4>Lamp 2</h4>
+					<input id='lamp2' type="text" name="fname">
+					<button type="button" onclick="sendLightCommand(2)" class="btn btn-secondary full-width">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				</div>
+				<div class="element col-md-1">
+					<h4>Lamp 3</h4>
+					<input id='lamp3' type="text" name="fname">
+					<button type="button" onclick="sendLightCommand(3)" class="btn btn-secondary full-width">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				</div>
+				<div class="element col-md-1">
+					<h4>Lamp 4</h4>
+					<input id='lamp4' type="text" name="fname">
+					<button type="button" onclick="sendLightCommand(4)" class="btn btn-secondary full-width">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				</div>
+				<div class="element col-md-1">
+					<h4>Lamp 5</h4>
+					<input id='lamp5' type="text" name="fname">
+					<button type="button" onclick="sendLightCommand(5)" class="btn btn-secondary full-width">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				</div>
+				<div class="element col-md-1">
+					<h4>Lamp 6</h4>
+					<input id='lamp6' type="text" name="fname">
+					<button type="button" onclick="sendLightCommand(6)" class="btn btn-secondary full-width">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				</div>
+				<div class="element col-md-1">
+					<h4>Lamp 7</h4>
+					<input id='lamp7' type="text" name="fname">
+					<button type="button" onclick="sendLightCommand(7)" class="btn btn-secondary full-width">
+						<span class="glyphicon glyphicon-wrench"></span>
+					</button>
+				</div>
+				
+			</div>
+          
         </div>
+		
+		
       </div>
+	  
 
       <div class="section row half">
         <div class="element col-md-5">
@@ -272,6 +342,12 @@
 		function sendCommand(command) {
 			//alert(command);
 			socket.send(command);
+		}
+		
+		function sendLightCommand(id) {
+			//alert(command);
+			value = document.getElementById("lamp" + id).value
+			sendCommand("lamp " + id + " " + value) 
 		}
 	</script>
 </body>
