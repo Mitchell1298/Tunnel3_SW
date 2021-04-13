@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
@@ -49,8 +50,71 @@
 
 	<br><br><!-- add 2 newlines to position page correctly -->
       <div class="page-header">
-        <h1>Websocket client page</h1>
-		<button name="button" value="OK" type="button" onclick="sendCommand('slagboom open')" class="btn btn-lg btn-primary">Click Here</button>  
+	  <div class="row">
+			<div class="col-md-12">
+				<button name="button" value="OK" type="button" onclick="sendCommand('slagboom open')" class="btn btn-lg btn-success">Slagboom open</button>
+				<button name="button" value="OK" type="button" onclick="sendCommand('slagboom close')" class="btn btn-lg btn-danger">Slagboom closed</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<h1>Camera 1</h1>
+			</div>
+		</div>
+        <div class="row">
+			<div class="col-md-4">
+			  
+			</div>
+			<div class="col-md-4">
+			  <button type="button" onclick="sendCommand('camera 1 up')" class="btn btn-secondary full-width">
+                <span class="glyphicon glyphicon-arrow-up"></span>
+              </button>
+			</div>
+			<div class="col-md-4">
+			  
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-md-4">
+			  <!--<button name="button" value="OK" type="button" onclick="sendCommand('slagboom open')" class="btn btn-lg btn-primary">Click Here</button>-->
+				<button type="button" onclick="sendCommand('camera 1 left')" class="btn btn-secondary full-width">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+              </button>
+			</div>
+			<div class="col-md-1">
+			  <button type="button" onclick="sendCommand('camera 1 zoomout')" class="btn btn-secondary full-width">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+			</div>
+			<div class="col-md-2">
+			  <button type="button" onclick="sendCommand('camera 1 home')" class="btn btn-secondary full-width">
+                <span class="glyphicon glyphicon-home"></span>
+              </button>
+			</div>
+			<div class="col-md-1">
+			  <button type="button" onclick="sendCommand('camera 1 zoomin')" class="btn btn-secondary full-width">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+			</div>
+			<div class="col-md-4">
+			  <button type="button" onclick="sendCommand('camera 1 right')" class="btn btn-secondary full-width">
+                <span class="glyphicon glyphicon-arrow-right"></span>
+              </button>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-md-4">
+			  
+			</div>
+			<div class="col-md-4">
+			  <button type="button" onclick="sendCommand('camera 1 down')" class="btn btn-secondary full-width">
+                <span class="glyphicon glyphicon-arrow-down"></span>
+              </button>
+			</div>
+			<div class="col-md-4">
+			  
+			</div>
+		  </div>
       </div>
       
 
@@ -73,13 +137,13 @@
 		let socket = new WebSocket("ws://localhost:8000");
 
 		socket.onopen = function(e) {
-		  alert("[open] Connection established");
-		  alert("Sending to server");
-		  socket.send("My name is John");
+		  //alert("[open] Connection established");
+		  //alert("Sending to server");
+		  //socket.send("New client connect");
 		};
 
 		socket.onmessage = function(event) {
-		  alert(`[message] Data received from server: ${event.data}`);
+		  //alert(`[message] Data received from server: ${event.data}`);
 		};
 
 		socket.onclose = function(event) {
