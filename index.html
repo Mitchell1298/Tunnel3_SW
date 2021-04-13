@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Bootstrap Example</title>
+  <title>Anti-Automation Tunnel</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/myStylesheet.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body data-new-gr-c-s-check-loaded="14.1005.0" data-gr-ext-installed="">
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<body data-new-gr-c-s-check-loaded="14.1005.0" data-gr-ext-installed="">
+  <div class="body-wrapper">
+    <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -20,41 +22,48 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Bootstrap theme</a>
+          <a class="navbar-brand" href="#">SW Tunnel 3</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li><a href="#">Sign In</a></li>
           </ul>
         </div><!--/.nav-collapse -->
+      </div><!--container -->
+    </nav><!-- Fixed navbar -->
+
+    <div class="container theme-showcase main-wrapper" style="align-items: center; width: 90%;" role="main">
+      <div class="section row half">
+        <div class="element col-md-4">
+          <h1>Primaire bediening (Buttons)</h1>
+        </div>
+        <div class="element col-md-8">
+          <h1>Overzichts-Plattegrond</h1>
+        </div>
       </div>
-    </nav>
 
-    <div class="container theme-showcase" role="main">
-
-	<br><br><!-- add 2 newlines to position page correctly -->
-      <div class="page-header">
-        <h1>Index page</h1>
-		<a href='bootstrap-elements.html'>Sample page</a>
+      <div class="section row half">
+        <div class="element col-md-5">
+          <h4>Overzicht (Statussen)</h4>
+        </div>
+        <div class="element col-md-7">
+          <div class="half-element row">
+            <div class="col-md-12">
+              <h2>Camera Controller</h2>
+            </div>
+          </div>
+          <div class="half-element row">
+            <div class="col-md-12">
+              <h2>Event Logging</h2>
+            </div>
+          </div>
+        </div>
       </div>
-      
+    </div> <!-- /container main-wrapper-->
+  </div>  <!-- /full-wrapper-->
 
-    </div> <!-- /container -->
-
+  </div>
+    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
