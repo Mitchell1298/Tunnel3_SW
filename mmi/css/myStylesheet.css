@@ -22,7 +22,7 @@ body{
 
 .half{
     height: 46%;
-    background-color: darkgray;
+    background-color: rgb(204, 204, 204);
 }
 
 .section{
@@ -42,7 +42,7 @@ body{
 }
 
 .row > div{
-    background-color: rgb(99, 99, 99);
+    background-color: rgb(194, 194, 194);
     border: 1px solid black;
 }
 
