@@ -35,6 +35,12 @@ class Bbb:
                 self.lfv.open_barrier(barrier)
         
 
+    def toggle_traffic_lights(self, light):
+        if self.last_light_state[light] == LightStatus.RED:
+            self.lfv.set_traffic_light_off(light)
+        elif self.last_light_state[light] == LightStatus.OFF:
+            self.lfv.set_traffic_light_red(light)
+
     def _update_thread(self):
         self.last_light_state = [None] * 4
         self.last_barrier_position = [None] * 2
@@ -92,16 +98,11 @@ if __name__ == "__main__":
 
     time.sleep(1.0)
 
-    bbb.lfv.set_traffic_light_off(2)
-    bbb.lfv.set_traffic_light_red(3)
-
-    bbb.toggle_barrier(Lfv.BARRIER_2)
-    
-
     # Exit loop on ctrl+c
     try:
         while True:
             time.sleep(1.0)
-            bbb.toggle_barrier(Lfv.BARRIER_2)
-    except:
+            bbb.toggle_traffic_lights(0)
+    except Exception as e:
+        print(e)
         bbb.running = False
