@@ -34,18 +34,143 @@
 
     <div class="container theme-showcase main-wrapper" style="align-items: center; width: 90%;" role="main">
       <div class="section row half">
+
+		<!-- Bediening -->
         <div class="element col-md-4">
           <h1>Primaire bediening (Buttons)</h1>
         </div>
+
+		<!-- Plattegrond -->
         <div class="element col-md-8">
           <h1>Overzichts-Plattegrond</h1>
         </div>
       </div>
 
+	  <!-- Status Overview -->
       <div class="section row half">
         <div class="element col-md-5">
           <h4>Overzicht (Statussen)</h4>
+		  <table class="table table-responsive table-striped">
+			  <tbody>
+				  	<tr data-toggle="collapse" id="table_verlichting" data-target=".table_verlichting">
+				  	  	<td>Verlichting</td>
+						<td><button class="btn btn-def btn-sm">View More</button></td>
+					</tr>
+				  	<tr class="collapse table_verlichting">
+						  <td colspan="999">
+							  <div>
+								  <table class="table table-striped">
+									  	<thead>
+										  	<tr>
+												<th>Number</th>
+												<th>Status</th>
+									  		</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>0</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>5</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>6</td>
+												<td>{STATUS}</td>
+											</tr>
+										</tbody>
+								  </table>
+							  </div>
+						  </td>
+			  	  	</tr>
+
+					<tr data-toggle="collapse" id="table_slagbomen" data-target=".table_slagbomen">
+				  	  	<td>Slagbomen</td>
+						<td><button class="btn btn-def btn-sm">View More</button></td>
+					</tr>
+				  	<tr class="collapse table_slagbomen">
+						  <td colspan="999">
+							  <div>
+								  <table class="table table-striped">
+									  	<thead>
+										  	<tr>
+												<th>Kant</th>
+												<th>Status</th>
+									  		</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Links</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>Rechts</td>
+												<td>{STATUS}</td>
+											</tr>
+										</tbody>
+								  </table>
+							  </div>
+						  </td>
+			  	  	</tr>
+
+					<tr data-toggle="collapse" id="table_stoplichten" data-target=".table_stoplichten">
+				  	  	<td>Stoplicht</td>
+						<td><button class="btn btn-def btn-sm">View More</button></td>
+					</tr>
+				  	<tr class="collapse table_stoplichten">
+						  <td colspan="999">
+							  <div>
+								  <table class="table table-striped">
+									  	<thead>
+										  	<tr>
+												<th>Number</th>
+												<th>Status</th>
+									  		</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>0</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>{STATUS}</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>{STATUS}</td>
+											</tr>
+										</tbody>
+								  </table>
+							  </div>
+						  </td>
+			  	  	</tr>
+			  </tbody> 
+		  </table>
         </div>
+
+		<!--Camera Controller-->
         <div class="element col-md-7">
           <div class="half-element row">
             <div class="col-md-12">
