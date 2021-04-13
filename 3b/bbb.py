@@ -1,4 +1,4 @@
-from lfv import Lfv, BarrierDirection, BarrierPosition
+from lfv import Lfv, BarrierDirection, BarrierPosition, LightStatus
 import threading
 import time
 
@@ -18,10 +18,20 @@ class Bbb:
 
     def toggle_barrier(self, barrier):
         b = [Lfv.BARRIER_1, Lfv.BARRIER_2]
-        if self.last_barrier_direction[b.index(barrier)] == BarrierDirection.NONE:
-            if self.last_barrier_position[b.index(barrier)] == BarrierPosition.UP:
+        i = b.index(barrier)
+        can_close = True
+
+        if (i==0):
+            if self.last_light_state[0] != LightStatus.RED or self.last_light_state[1] != LightStatus.RED:
+                can_close = False
+        elif (i==1):
+            if self.last_light_state[2] != LightStatus.RED or self.last_light_state[3] != LightStatus.RED:
+                can_close = False
+
+        if self.last_barrier_direction[i] == BarrierDirection.NONE:
+            if self.last_barrier_position[i] == BarrierPosition.UP and can_close:
                 self.lfv.close_barrier(barrier)
-            elif self.last_barrier_position[b.index(barrier)] == BarrierPosition.DOWN:
+            elif self.last_barrier_position[i] == BarrierPosition.DOWN:
                 self.lfv.open_barrier(barrier)
         
 
@@ -82,7 +92,8 @@ if __name__ == "__main__":
 
     time.sleep(1.0)
 
-    bbb.lfv.set_traffic_light_off(1)
+    bbb.lfv.set_traffic_light_off(2)
+    bbb.lfv.set_traffic_light_red(3)
 
     bbb.toggle_barrier(Lfv.BARRIER_2)
     
