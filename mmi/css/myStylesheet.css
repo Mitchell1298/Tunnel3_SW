@@ -1,0 +1,52 @@
+/* 
+* {
+	border: 1px solid white;
+}   */
+
+body{
+    background-color: rgb(61, 61, 61);
+    overflow: hidden;
+}
+
+.main-wrapper{
+    height: 100vh;
+    border: 1x solid rgb(73, 73, 73);
+}
+
+.navbar{
+    height: 8%;
+    width: 100%;
+    background-color: black;
+
+}
+
+.half{
+    height: 46%;
+    background-color: rgb(204, 204, 204);
+}
+
+.section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.element{
+    height: 100%;
+}
+
+.half-element{
+    height: 50%;
+}
+
+.row > div{
+    background-color: rgb(194, 194, 194);
+    border: 1px solid black;
+}
+
+body-wrapper{
+    height: 100%;
+}
+
