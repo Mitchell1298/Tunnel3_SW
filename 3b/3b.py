@@ -1,4 +1,4 @@
-from lfv import Lfv
+from lfv import Lfv, BarrierDirection, BarrierPosition
 import threading
 import time
 
@@ -14,6 +14,15 @@ class Bbb:
         self.lights_level_callback = None
 
         self.thread.start()
+
+
+    def toggle_barrier(self, barrier):
+        b = [Lfv.BARRIER_1, Lfv.BARRIER_2]
+        if self.last_barrier_direction[b.index(barrier)] == BarrierDirection.NONE:
+            if self.last_barrier_position[b.index(barrier)] == BarrierPosition.UP:
+                self.lfv.close_barrier(barrier)
+            elif self.last_barrier_position[b.index(barrier)] == BarrierPosition.DOWN:
+                self.lfv.open_barrier(barrier)
         
 
     def _update_thread(self):
@@ -70,13 +79,18 @@ if __name__ == "__main__":
     bbb = Bbb("192.168.0.47")
     bbb.barrier_position_callback = on_barrier_position_changed
     bbb.barrier_direction_callback = on_barrier_direction_changed
+
+    time.sleep(1.0)
+
     bbb.lfv.set_traffic_light_off(1)
-    bbb.lfv.open_barrier(Lfv.BARRIER_1)
+
+    bbb.toggle_barrier(Lfv.BARRIER_2)
     
 
     # Exit loop on ctrl+c
     try:
         while True:
-            time.sleep(10.0)
+            time.sleep(1.0)
+            bbb.toggle_barrier(Lfv.BARRIER_2)
     except:
         bbb.running = False
