@@ -50,9 +50,13 @@
 						<rect x="0" y="0" width="500" height="100" style="fill:rgb(0,0,0);stroke-width:3;stroke:rgb(0,0,0)" />
 						<line x1="0" y1="50" x2="500" y2="50" style="stroke:rgb(255,255,255);stroke-width:2" />
 						
-						<rect x="20" y="5" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
-						<rect x="20" y="25" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
-						<line id='slagboom1' onclick="sendCommand('slagboom 1 toggle')" x1="70" y1="0" x2="70" y2="40" style="stroke:rgb(255,0,0);stroke-width:10" />
+						<rect id='trafficlight4' onclick="sendCommand('trafficlight 3 toggle')" x="20" y="5" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
+						<rect id='trafficlight3' onclick="sendCommand('trafficlight 2 toggle')" x="20" y="25" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
+						<line id='slagboom1' onclick="sendCommand('slagboom 2 toggle')" x1="70" y1="0" x2="70" y2="40" style="stroke:rgb(255,0,0);stroke-width:10" />
+						
+						<rect id='trafficlight1' onclick="sendCommand('trafficlight 1 toggle')" x="20" y="55" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
+						<rect id='trafficlight2' onclick="sendCommand('trafficlight 0 toggle')" x="20" y="75" width="40" height="20" style="fill:rgb(255, 0, 0);stroke-width:3;stroke:rgb(99,99,99)" />
+						<line id='slagboom1' onclick="sendCommand('slagboom 2 toggle')" x1="70" y1="60" x2="70" y2="100" style="stroke:rgb(255,0,0);stroke-width:10" />
 						<!--<line onclick="sendCommand('slagboom 1 open')" x1="70" y1="20" x2="70" y2="40" style="stroke:rgb(0,255,0);stroke-width:10" />-->
 						
 					</svg>
@@ -454,20 +458,35 @@
 		var b = Math.floor(Math.random() * 255);
 
 		//document.getElementById("slagboom1").style.stroke = 'rgb(' + r + ', ' + g + ' , ' + b + ')';
-		if (parts[0] == 0)
+		if (parts[0] == "barrier")
 		 {
-			//document.getElementById("slagboom1").style.fill="green";
-
-			if (parts[1] == 1)
+			if (parts[1] == 0)
 			{
-				console.log("HIJSOPEN");
-				//document.getElementById("slagboom1").style.stoke="red";
-				document.getElementById("slagboom1").style.stroke = 'rgb(0,255,0)';
+				if (parts[2] == 1)
+				{
+					//console.log("HIJSOPEN");
+					//document.getElementById("slagboom1").style.stoke="red";
+					document.getElementById("slagboom1").style.stroke = 'rgb(0,255,0)';
+				}
+				else if (parts[2] == 3)
+				{
+					document.getElementById("slagboom1").style.stroke = 'rgb(255,0,0)';
+					//console.log("HIJSDICHT");
+				}
 			}
-			else if (parts[1] == 3)
+			else if (parts[1] == 1)
 			{
-				document.getElementById("slagboom1").style.stroke = 'rgb(255,0,0)';
-				console.log("HIJSDICHT");
+				if (parts[2] == 1)
+				{
+					//console.log("HIJSOPEN");
+					//document.getElementById("slagboom1").style.stoke="red";
+					document.getElementById("slagboom2").style.stroke = 'rgb(0,255,0)';
+				}
+				else if (parts[2] == 3)
+				{
+					document.getElementById("slagboom2").style.stroke = 'rgb(255,0,0)';
+					//console.log("HIJSDICHT");
+				}
 			}
 		 }
 		};

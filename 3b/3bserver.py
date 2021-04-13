@@ -1,6 +1,6 @@
 from simple_websocket_server import WebSocketServer, WebSocket
 from lfv import Lfv
-from aaaa import Bbb
+from bbb import Bbb
     
 
 class SimpleChat(WebSocket):
@@ -23,6 +23,8 @@ class SimpleChat(WebSocket):
             self.onStopLichtOff()
         elif (command == "camera"):
             self.controlCamera(parameter1, parameter2)
+        elif (command == "trafficlight"):
+            self.controlTrafficlight(parameter1, parameter2)
         else:
             self.broadcastMessage("Unkown command")
         
@@ -124,14 +126,30 @@ class SimpleChat(WebSocket):
         else:
             self.broadcastMessage("Unkown Camera Command")
         self.broadcastMessage("Adjusted camera")
-            
+        
+    def controlTrafficlight(self, parameter1, parameter2):
+        print("before stuff")
+        if parameter2 == "on":
+            self.bbb.lfv.set_traffic_light_on(parameter1)
+            self.broadcastMessage("Opened trafficlight")
+        elif parameter2 == "off":
+            self.bbb.lfv.set_traffic_light_off(parameter1)
+            self.broadcastMessage("Closed trafficlight")
+        elif parameter2 == "toggle":
+            print("before stuff1")
+            self.bbb.toggle_traffic_lights(int(parameter1))
+            print("after stuff")
+            self.broadcastMessage("Toggled trafficlight")
+        else:
+            self.broadcastMessage("Unknown trafficlight command")
+        
     def broadcastMessage(self, message):
         print("Broadcast: " + message)
         for client in clients:
             client.send_message(message)
     #callback functions
     def on_barrier_position_changed(self, barrier, position):
-        self.broadcastMessage(str(barrier) + " " + str(position.value))
+        self.broadcastMessage("barrier " + str(barrier) + " " + str(position.value))
         #print(str(barrier) + " " + str(position))
 
     def on_barrier_direction_changed(self, barrier, direction):
